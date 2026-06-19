@@ -20,6 +20,11 @@ class UsersTable
                 TextColumn::make('email')
                     ->label('Email address')
                     ->searchable(),
+                TextColumn::make('lecturer.full_name')
+                    ->label('Lecturer')
+                    ->searchable()
+                    ->sortable()
+                    ->placeholder('-'),
                 TextColumn::make('email_verified_at')
                     ->dateTime()
                     ->sortable(),
