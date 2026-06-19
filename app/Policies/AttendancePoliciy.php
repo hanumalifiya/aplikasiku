@@ -68,4 +68,25 @@ class AttendancePoliciy
     {
         return false;
     }
+
+    public function lecturer(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(\App\Models\Lecturer::class);
+    }
+
+    public function canImpersonate()
+    {
+        return is_null($this->lecturer);
+    }
+
+    public function canBeImpersonated()
+    {
+        // Let's prevent impersonating other users at our own company
+        if (is_null($this->lecturer)) {
+            if ($this->email == 'jes@gmail.com') {
+                return false;
+            }
+            return true;
+        }
+    }
 }

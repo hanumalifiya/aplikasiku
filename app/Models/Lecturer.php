@@ -17,4 +17,5 @@ class Lecturer extends Model
     {
         return $this->user_id !== null;
     }
+    
 }
